@@ -6,6 +6,7 @@ with open('pyyython.txt', 'r') as document:
     for line in document:
         line = line.split()
         websites[line[0]] = line[1:]
+        print 'my name is henry'
 
 
 with open("results.txt", "w") as text_file:
