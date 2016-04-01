@@ -1,0 +1,19 @@
+def primeNumbers(num):
+    primes = []
+    i = 2
+#    for i in range(num) : # iterates through range from 2 to num(inclusive)
+    while i < num+1:     # add 'while' condition#
+        k = 2
+        isPrime = True
+        if i%k == 0:  # check if prime number#
+            while k != i:      # add 'while' condition
+	            if i%k == 0:
+	                isPrime = False
+                    i += 1# update k
+                    break
+        if isPrime:
+            primes.append(i)
+            i += 1               # update i
+    return primes
+
+print primeNumbers(5)

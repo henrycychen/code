@@ -1,0 +1,3 @@
+site1 https://www.google.com
+site2 https://www.ask.com
+site3 https://www.search.com
