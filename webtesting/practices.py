@@ -83,7 +83,58 @@ I capitalized/lower cased. I then decided to see if there was a method in PyChar
 cheat sheet now.
 """
 
+#Write the function search(word, substring) that takes in a word and a substring as arguments and returns the position
+# (0 indexed) of the substring if it is found in the word. The function returns -1 if the substring is not found.
 
+def search(word, substring):
+    return word.find(substring)
+
+search("apple", 'p')
+search("google", 'apple')
+search("google", 'p')
+search("google", 'oo')
+
+"""
+1:30 - Thought maybe there was a built-in method already. I searched for it using word.find and I saw "substring".
+"""
+
+#A string contains a sequence of characters. Elements within a string can be accessed using index that starts from 0.
+# Write the function getChar(word, pos) that takes in a word and a number as argument and returns the character at that
+# position.
+
+def getChar(word, pos):
+    if len(word) < pos:
+        return 'Invalid Range'
+    else:
+        return word[pos]
+
+print getChar("apple", 2)
+print getChar("google", 0)
+print getChar("google", 10)
+
+"""
+5:49  - I got word[pos] in like 10 seconds, but was trying to figure out why getChar("google", 10) returned 'Invalid Range'.
+Finally figured it out that it just wanted to use an if/else.
+"""
+
+#Write a function countVowels(word) that takes in a word as an argument and returns the number of vowels
+# ('a', 'e', 'i', 'o', 'u') in the word.
+
+def countVowels(word):
+    count = 0
+    for letters in word:
+        if letters == 'a' or letters == 'e' or letters == 'i' or letters == 'o' or letters == 'u':
+            count += 1
+    return count
+
+print countVowels('apple')
+print countVowels('microsoft')
+print countVowels('google')
+
+"""
+2:35 - This one was easy. Would have been faster, but was trying to see if I could combine aeiou in a shorter boolean.
+I just gave up and used the long way.
+"""
 
 
 
