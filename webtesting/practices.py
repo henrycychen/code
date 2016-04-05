@@ -1,4 +1,4 @@
-#Times practice problems from pyschools.
+#Timed practice problems from pyschools.
 
 #Write the function countA(word) that takes in a word as argument and returns the number of 'a' in that word.
 def countA(word):
