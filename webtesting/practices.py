@@ -229,4 +229,53 @@ print removeVowels('Banana')
 
 """
 2:12 - Was easy to figure out from the previous 40 minute problem I worked on.
+"""
 
+#Write the function reverseWord(word) that returns the word in the reverse order.
+
+def reverseWord(word):
+    return word[::-1]
+
+print reverseWord('apple')
+print reverseWord('google')
+
+"""
+0:30 - Not sure why it took me 30 seconds to come up with this, but whatever... haha
+"""
+
+#Write the function isReverse(word1, word2) that takes two words as arguments and returns True is the second word is
+# the reverse of the first word.
+
+def isReverse(word1, word2):
+    if word1[::-1] == word2:
+        return True
+    else:
+        return False
+
+print isReverse('apple', 'elppa')
+print isReverse('google', 'apple')
+print isReverse('google', 'elgoog')
+print isReverse('apple', 'alppe')
+
+"""
+1:08 - This one was pretty easy to figure out, not much to explain here.
+"""
+
+#Write the function startWithVowel(word) that takes in a word as argument and returns a substring that starts with the
+# first vowel found in the word. The function returns 'No vowel' if the word does not contain vowel.
+def startWithVowel(word):
+    vowels = 'aeiouAEIOU'
+    for letters in word:
+        if letters in vowels:
+            return word[word.find(letters):len(word)]
+    else:
+        return 'No Vowel'
+
+print startWithVowel('apple')
+print startWithVowel('google')
+print startWithVowel('xyz')
+
+"""
+26:55 - Took me a while to figure out the method .find. I remember there was something that could tell me the index of it.
+I had to google what the method did and then play around with the for loop and indexing to get it right.
+"""
