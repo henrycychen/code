@@ -136,11 +136,97 @@ print countVowels('google')
 I just gave up and used the long way.
 """
 
+#Write the function getVowels(word) that takes in a word as an argument and returns the vowels ('a', 'e', 'i', 'o', 'u')
+# in that word.
 
+def getVowels(word):
+    vowels = []
+    for letters in word:
+        if letters == 'a' or letters == 'e' or letters == 'i' or letters == 'o' or letters == 'u' or letters == 'A':
+            vowels.append(letters)
+    return vowels
 
+print getVowels("apple")
+print getVowels("Apple")
+print getVowels("Banana")
 
+"""
+9:02 - I knew I needed to use a for loop for this, but got stuck when it just returned letters. Finally I realized I needed
+to make a list and append the vowels to it.
 
+decided to look up how to shorten my booleans... remade the function.
 
+def getVowels(word):
+    vowels_letters = 'AEIOUaeiou'
+    vowels_list = []
+    for letters in word:
+        if letters in vowels_letters:
+            vowels_list.append(letters)
+    return vowels_list
+"""
 
+#Write the function capitalizeVowels(word) that returns the word with all the vowels capitalized
 
+def capitalizeVowels(word):
+    for letters in word:
+        vowels = 'aeiou'
+        if letters in vowels:
+            word = word.replace(letters, letters.upper())
+    return word
+
+print capitalizeVowels('apple')
+print capitalizeVowels('google')
+
+"""
+40+ minutes... Got frustrated with the below code that I made so I cheated and went to go look for the answer. Apparently,
+setting up a new object 'new_word' instead of using the original object, 'word', the loop cancels out any changes and just
+returns the final loop. I think I got most of the code correctly in 6 minutes, but spent the remaining time trying to figure
+out why it didn't work...
+
+def capitalizeVowels(word):
+    new_word = ''
+    for letters in word:
+        vowels = 'aeiou'
+        if letters in vowels:
+            new_word = word.replace(letters, letters.upper())
+"""
+
+#Write the function startEndVowels(word) that returns True if the word starts and ends with vowels.
+
+def startEndVowels(word):
+    vowels = 'aeiouAEIOU'
+    while len(word) > 0:
+        if word[0] in vowels and word[-1] in vowels:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+print startEndVowels('A')
+print startEndVowels('')
+print startEndVowels('apple')
+print startEndVowels('google')
+
+"""
+10:00 - started with an if statement, but then realized I needed a while loop because of the empty '' word. 10 minutes
+goes by fast for such an easy problem...
+"""
+
+#Write the function removeVowels(word) that removes all the vowels ('a', 'e', 'i', 'o', 'u') in a word and returns the
+# remaining letters in the word.
+
+def removeVowels(word):
+    vowels = 'aeiouAEIOU'
+    for letters in word:
+        if letters in vowels:
+            word = word.replace(letters,'')
+    return word
+
+print removeVowels('apple')
+print removeVowels('Apple')
+print removeVowels('Banana')
+
+"""
+2:12 - Was easy to figure out from the previous 40 minute problem I worked on.
 
