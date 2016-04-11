@@ -279,3 +279,232 @@ print startWithVowel('xyz')
 26:55 - Took me a while to figure out the method .find. I remember there was something that could tell me the index of it.
 I had to google what the method did and then play around with the for loop and indexing to get it right.
 """
+
+#Write the function getCommonLetters(word1, word2) that takes in two words as arguments and returns a new string that
+# contains letters found in both string. Ignore repeated letters and sort the result in alphabetical order.
+
+def getCommonLetters(word1, word2):
+    new_word = []
+    for letters in word1:
+        if letters in word2:
+            new_word.append(letters)
+    return ''.join(sorted(set(new_word)))
+
+print getCommonLetters('apple','google')
+print getCommonLetters('microsoft','apple')
+print getCommonLetters('microsoft','google')
+
+"""
+Gave up after 26:31 minutes and went to go look for help first then the answer. I actually made my for_loop and appended
+the letters that were common in a list, but I didn't know how to return all the letters out until I found the ''.join
+built-in function. My next issue was then I didn't know/forgot how to only return non-dupes of a string until I found set().
+I looked further and apparently you don't even need a for loop... answer below that uses .intersection function
+
+def getCommonLetterss(a, b):
+    return ''.join(sorted(set(a).intersection(set(b))))
+
+print getCommonLetterss('microsoft','google')
+"""
+
+#Write a function mirrorText(word1, word2) that takes in 2 words as arguments and returns a new word in the following
+# order: word1word2word2word1.
+
+def mirrorText(word1, word2):
+    return word1+word2+word2+word1
+
+print mirrorText('hello','world')
+print mirrorText('apple','orange')
+print mirrorText('google','yahoo')
+
+"""
+1:12 - Finally an easy one. pretty self explanatory
+"""
+
+#Write a function echoWord(word) that takes in a word as arguments and returns a word that repeats itself based on the
+# number of letter in the word.
+
+def echoWord(word):
+    return word*len(word)
+
+print echoWord('hi')
+print echoWord('apple')
+print echoWord('ice')
+
+"""
+0:45 - Another easy one.
+"""
+
+#Write a function rightJustify(word) that takes in a word as argument and return a word with leading spaces so that
+#  the last letter of the word is in column 50 of the display.
+
+def rightJustify(word):
+    return '%50s' %word
+
+print rightJustify('apple')
+print rightJustify('google')
+print rightJustify('microsoft')
+
+"""
+15:14 - Had to look for string formats as I forgot how to make spaces.
+"""
+
+#A palindrome is a word, phrase, number or other sequence of units that can be read the same way in either direction.
+# Write a function that determines whether the given word or number is a palindrome.
+
+def isPalindrome(word):
+    while word == str(word):
+        if len(word) < 1:
+            return False
+        if word[::-1] == word:
+            return True
+        else:
+            return False
+    else:
+        new_word = str(word)
+        if new_word == new_word[::-1]:
+            return True
+        else:
+            return False
+
+print isPalindrome("")
+print isPalindrome(121)
+print isPalindrome("Racecar")
+print isPalindrome("Never")
+print isPalindrome("level")
+
+"""
+26:12 - Figuring out if the strings were palindromes only took me a few minutes. What took me longer to figure out was
+the integer and "" (had to put in specific if/else statements). Originally started with an if statement, but then changed
+to a while loop and had to play around with all the different if/else statements in a while loop to finally satisfy all
+the different types of str/ints
+"""
+
+#Write a function isInAlphabeticalOrder(word) that takes in a word as argument and returns True if the word contains letters
+#  that are arranged in alphabetical order. For example, the letter 'c' should not appear before the letter 'a'.
+
+def isInAlphabeticalOrder(word):
+    word_sorted = sorted(word)
+    listed_word = []
+    for letters in word:
+        listed_word.append(letters)
+
+    if word_sorted == listed_word:
+        return True
+    else:
+        return False
+
+print 'isInAlphabetical', isInAlphabeticalOrder('app')
+print 'isInAlphabetical', isInAlphabeticalOrder('apple')
+print 'isInAlphabetical', isInAlphabeticalOrder('goo')
+print 'isInAlphabetical', isInAlphabeticalOrder('google')
+
+"""
+14:16 - Thought there was an alphabetize function, but I remembered there is a sorted function. After I found that, was
+playing around with the result of that sorted function and how to compare it. I ran into a hiccup when the sorted function
+didn't equal the word, so I made a for loop and turned the word into a list also. Worked after that.
+"""
+
+#Write a function isAllLettersUsed(word, required) that takes in a word as the first argument and returns True if the
+# word contains all the letters found in the second argument.
+
+def isAllLettersUsed(word, required):
+
+    for letters in required:
+        if letters in word:
+            continue
+        else:
+            return False
+    return True
+
+print isAllLettersUsed('learning python', 'google')
+print isAllLettersUsed('apple', 'apple')
+print isAllLettersUsed('apple', 'google')
+print isAllLettersUsed('learning python', 'google')
+print isAllLettersUsed('learning python', 'apple')
+
+"""
+29:09 - I was a bit all over the place on this one. Did a bunch of quessing and checking with if else statements, then
+a lot of guessing on for loops with the if/else statements. In between was messing around with the sorted(function) thinking
+I needed to make the word into a list and compare it with the required. Anyways, finally got it to work.
+"""
+
+#Write a function isTripleDouble(word) that takes in a word as argument and returns True if the word contains three
+# consecutive double letters.
+
+def isTripleDouble(word):
+    """Tests if a word contains three consecutive double letters."""
+    i = 0
+    count = 0
+    while i < len(word)-1:
+        if word[i] == word[i+1]:
+            count = count + 1
+            if count == 3:
+                return True
+            i = i + 2
+        else:
+            count = 0
+            i = i + 1
+    return False
+
+
+print isTripleDouble('appllee')
+print isTripleDouble('aapplee')
+print isTripleDouble('applle')
+
+"""
+7:04 - Did not figure out this answer. Started with For loop, messed around with it and if/else statements. Finally gave
+up and looked up the answer. I think even if I had a hint to use while loops, I wouldn't have been able to figure it out.
+I understand it now, but I think will need more practice to put together this kind of answer.
+"""
+
+#Write a function splitWord(word, numOfChar) that takes in a word and a number as arguments. The function will split
+#  the word into smaller segments with each segment containing the number of letter specified in the numOfChar argument.
+#  These segments are stored and returned in a list.
+
+def splitWord(word, numOfChar):
+    new_list = []
+    i = 0
+    e = i+numOfChar
+    while i < len(word):
+        new_list.append(word[i:e])
+        i = i + numOfChar
+        e = i + numOfChar
+    return new_list
+
+
+print splitWord('google', 2)
+print splitWord('google', 3)
+print splitWord('apple', 1)
+print splitWord('apple', 4)
+
+"""
+18:16 - A lot of guessing and checking, but I figured it out! Again, only way I came up with this is because the previous
+program stumped me, but this used while loops so eventually got it.
+"""
+
+#An anagram is a word formed by reordering the letters of another word. Write a function isAnagram(w1, w2) that takes
+# in two words as arguments and return True if one word is an anagram of the other word.
+
+def isAnagram(w1,w2):
+    for letters in w1.lower():
+        if letters in w2.lower():
+            continue
+        else:
+            return False
+    return True
+
+print isAnagram('google', 'gogole')
+print isAnagram('google', 'gogoll')
+print isAnagram('google', 'gogogo')
+print isAnagram('Google', 'google')
+
+"""
+2:52 - This one was easy. Just made sure to check the letters were in the other argument and made sure they were all in
+lower case.
+"""
+
+
+
+
+
+
