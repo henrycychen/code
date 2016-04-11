@@ -499,7 +499,7 @@ print isAnagram('google', 'gogogo')
 print isAnagram('Google', 'google')
 
 """
-2:52 - This one was easy. Just made sure to check the letters were in the other argument and made sure they were all in
+2:52 - This one was easy. Just made sure to check the letters were in the other argument and that they were all in
 lower case.
 """
 
