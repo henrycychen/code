@@ -1,6 +1,7 @@
 #Timed practice problems from pyschools.
 
-#Write the function countA(word) that takes in a word as argument and returns the number of 'a' in that word.
+#All string problems
+#1 - Write the function countA(word) that takes in a word as argument and returns the number of 'a' in that word.
 def countA(word):
     count = 0
     for letter in word:
@@ -28,7 +29,7 @@ print countA("Apple")
 print countA("Banana")
 """
 
-#Write the function countLetter(word, letter) that takes in a word and a letter as arguments and returns the number of
+#2 - Write the function countLetter(word, letter) that takes in a word and a letter as arguments and returns the number of
 # occurrence of that letter in the word.
 
 def countLetter(word, letter):
@@ -49,7 +50,7 @@ have with writing in PyCharm is I can do a guess and check... because I "run" my
 worries me as I recall you saying you guys use a white/blackboard in interviews?
 """
 
-#Write a function removeLetter(word, letter) that takes in a word and a letter as arguments and remove all the occurrence
+#3 - Write a function removeLetter(word, letter) that takes in a word and a letter as arguments and remove all the occurrence
 # of that particular letter from the word. The function will returns the remaining leters in the word.
 
 def removeLetter(word,letter):
@@ -67,7 +68,7 @@ Luckily I tested the .replace method and it worked. Again, I think I'm screwed i
 writing these on a cheat sheet now.
 """
 
-#Write the function changeCase(word) that changes the case of all the letters in a word and returns the new word.
+#4 - Write the function changeCase(word) that changes the case of all the letters in a word and returns the new word.
 
 def changeCase(word):
         return word.swapcase()
@@ -83,7 +84,7 @@ I capitalized/lower cased. I then decided to see if there was a method in PyChar
 cheat sheet now.
 """
 
-#Write the function search(word, substring) that takes in a word and a substring as arguments and returns the position
+#5 - Write the function search(word, substring) that takes in a word and a substring as arguments and returns the position
 # (0 indexed) of the substring if it is found in the word. The function returns -1 if the substring is not found.
 
 def search(word, substring):
@@ -98,7 +99,7 @@ search("google", 'oo')
 1:30 - Thought maybe there was a built-in method already. I searched for it using word.find and I saw "substring".
 """
 
-#A string contains a sequence of characters. Elements within a string can be accessed using index that starts from 0.
+#6 - A string contains a sequence of characters. Elements within a string can be accessed using index that starts from 0.
 # Write the function getChar(word, pos) that takes in a word and a number as argument and returns the character at that
 # position.
 
@@ -117,7 +118,7 @@ print getChar("google", 10)
 Finally figured it out that it just wanted to use an if/else.
 """
 
-#Write a function countVowels(word) that takes in a word as an argument and returns the number of vowels
+#7 - Write a function countVowels(word) that takes in a word as an argument and returns the number of vowels
 # ('a', 'e', 'i', 'o', 'u') in the word.
 
 def countVowels(word):
@@ -136,7 +137,7 @@ print countVowels('google')
 I just gave up and used the long way.
 """
 
-#Write the function getVowels(word) that takes in a word as an argument and returns the vowels ('a', 'e', 'i', 'o', 'u')
+#8 - Write the function getVowels(word) that takes in a word as an argument and returns the vowels ('a', 'e', 'i', 'o', 'u')
 # in that word.
 
 def getVowels(word):
@@ -165,7 +166,7 @@ def getVowels(word):
     return vowels_list
 """
 
-#Write the function capitalizeVowels(word) that returns the word with all the vowels capitalized
+#9 - Write the function capitalizeVowels(word) that returns the word with all the vowels capitalized
 
 def capitalizeVowels(word):
     for letters in word:
@@ -191,7 +192,7 @@ def capitalizeVowels(word):
             new_word = word.replace(letters, letters.upper())
 """
 
-#Write the function startEndVowels(word) that returns True if the word starts and ends with vowels.
+#10 - Write the function startEndVowels(word) that returns True if the word starts and ends with vowels.
 
 def startEndVowels(word):
     vowels = 'aeiouAEIOU'
@@ -213,7 +214,7 @@ print startEndVowels('google')
 goes by fast for such an easy problem...
 """
 
-#Write the function removeVowels(word) that removes all the vowels ('a', 'e', 'i', 'o', 'u') in a word and returns the
+#11 - Write the function removeVowels(word) that removes all the vowels ('a', 'e', 'i', 'o', 'u') in a word and returns the
 # remaining letters in the word.
 
 def removeVowels(word):
@@ -231,7 +232,7 @@ print removeVowels('Banana')
 2:12 - Was easy to figure out from the previous 40 minute problem I worked on.
 """
 
-#Write the function reverseWord(word) that returns the word in the reverse order.
+#12 - Write the function reverseWord(word) that returns the word in the reverse order.
 
 def reverseWord(word):
     return word[::-1]
@@ -243,7 +244,7 @@ print reverseWord('google')
 0:30 - Not sure why it took me 30 seconds to come up with this, but whatever... haha
 """
 
-#Write the function isReverse(word1, word2) that takes two words as arguments and returns True is the second word is
+#13 - Write the function isReverse(word1, word2) that takes two words as arguments and returns True is the second word is
 # the reverse of the first word.
 
 def isReverse(word1, word2):
@@ -261,7 +262,7 @@ print isReverse('apple', 'alppe')
 1:08 - This one was pretty easy to figure out, not much to explain here.
 """
 
-#Write the function startWithVowel(word) that takes in a word as argument and returns a substring that starts with the
+#14 - Write the function startWithVowel(word) that takes in a word as argument and returns a substring that starts with the
 # first vowel found in the word. The function returns 'No vowel' if the word does not contain vowel.
 def startWithVowel(word):
     vowels = 'aeiouAEIOU'
@@ -280,7 +281,7 @@ print startWithVowel('xyz')
 I had to google what the method did and then play around with the for loop and indexing to get it right.
 """
 
-#Write the function getCommonLetters(word1, word2) that takes in two words as arguments and returns a new string that
+#15 - Write the function getCommonLetters(word1, word2) that takes in two words as arguments and returns a new string that
 # contains letters found in both string. Ignore repeated letters and sort the result in alphabetical order.
 
 def getCommonLetters(word1, word2):
@@ -306,7 +307,7 @@ def getCommonLetterss(a, b):
 print getCommonLetterss('microsoft','google')
 """
 
-#Write a function mirrorText(word1, word2) that takes in 2 words as arguments and returns a new word in the following
+#16 - Write a function mirrorText(word1, word2) that takes in 2 words as arguments and returns a new word in the following
 # order: word1word2word2word1.
 
 def mirrorText(word1, word2):
@@ -320,7 +321,7 @@ print mirrorText('google','yahoo')
 1:12 - Finally an easy one. pretty self explanatory
 """
 
-#Write a function echoWord(word) that takes in a word as arguments and returns a word that repeats itself based on the
+#17 - Write a function echoWord(word) that takes in a word as arguments and returns a word that repeats itself based on the
 # number of letter in the word.
 
 def echoWord(word):
@@ -334,7 +335,7 @@ print echoWord('ice')
 0:45 - Another easy one.
 """
 
-#Write a function rightJustify(word) that takes in a word as argument and return a word with leading spaces so that
+#18 - Write a function rightJustify(word) that takes in a word as argument and return a word with leading spaces so that
 #  the last letter of the word is in column 50 of the display.
 
 def rightJustify(word):
@@ -348,7 +349,7 @@ print rightJustify('microsoft')
 15:14 - Had to look for string formats as I forgot how to make spaces.
 """
 
-#A palindrome is a word, phrase, number or other sequence of units that can be read the same way in either direction.
+#19 - A palindrome is a word, phrase, number or other sequence of units that can be read the same way in either direction.
 # Write a function that determines whether the given word or number is a palindrome.
 
 def isPalindrome(word):
@@ -379,7 +380,7 @@ to a while loop and had to play around with all the different if/else statements
 the different types of str/ints
 """
 
-#Write a function isInAlphabeticalOrder(word) that takes in a word as argument and returns True if the word contains letters
+#20 - Write a function isInAlphabeticalOrder(word) that takes in a word as argument and returns True if the word contains letters
 #  that are arranged in alphabetical order. For example, the letter 'c' should not appear before the letter 'a'.
 
 def isInAlphabeticalOrder(word):
@@ -404,7 +405,7 @@ playing around with the result of that sorted function and how to compare it. I 
 didn't equal the word, so I made a for loop and turned the word into a list also. Worked after that.
 """
 
-#Write a function isAllLettersUsed(word, required) that takes in a word as the first argument and returns True if the
+#21 - Write a function isAllLettersUsed(word, required) that takes in a word as the first argument and returns True if the
 # word contains all the letters found in the second argument.
 
 def isAllLettersUsed(word, required):
@@ -428,7 +429,7 @@ a lot of guessing on for loops with the if/else statements. In between was messi
 I needed to make the word into a list and compare it with the required. Anyways, finally got it to work.
 """
 
-#Write a function isTripleDouble(word) that takes in a word as argument and returns True if the word contains three
+#22 - Write a function isTripleDouble(word) that takes in a word as argument and returns True if the word contains three
 # consecutive double letters.
 
 def isTripleDouble(word):
@@ -457,14 +458,14 @@ up and looked up the answer. I think even if I had a hint to use while loops, I 
 I understand it now, but I think will need more practice to put together this kind of answer.
 """
 
-#Write a function splitWord(word, numOfChar) that takes in a word and a number as arguments. The function will split
+#23 - Write a function splitWord(word, numOfChar) that takes in a word and a number as arguments. The function will split
 #  the word into smaller segments with each segment containing the number of letter specified in the numOfChar argument.
 #  These segments are stored and returned in a list.
 
 def splitWord(word, numOfChar):
     new_list = []
-    i = 0
-    e = i+numOfChar
+    i = 0 #counter for the index
+    e = i+numOfChar #the spaces to split the word
     while i < len(word):
         new_list.append(word[i:e])
         i = i + numOfChar
@@ -482,7 +483,7 @@ print splitWord('apple', 4)
 program stumped me, but this used while loops so eventually got it.
 """
 
-#An anagram is a word formed by reordering the letters of another word. Write a function isAnagram(w1, w2) that takes
+#24 - An anagram is a word formed by reordering the letters of another word. Write a function isAnagram(w1, w2) that takes
 # in two words as arguments and return True if one word is an anagram of the other word.
 
 def isAnagram(w1,w2):
