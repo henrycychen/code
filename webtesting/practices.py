@@ -504,8 +504,132 @@ print isAnagram('Google', 'google')
 lower case.
 """
 
+### Lists questions
+#4 - Write a function addNumbersInList(numbers) to add all the numbers in a list. To access each element in a list,
+#  you can use the statement 'for num in numbers:'.
 
+def addNumbersInList(numbers):
+    count = 0
+    for items in numbers:
+        count += items
+    return count
 
+print addNumbersInList([])
+print addNumbersInList([10, 20, 30])
+print addNumbersInList([-10, -20, 30])
 
+"""
+02:18 - Easy for loop for addition. Need to just add each iteration in the list.
+"""
+
+#5 - Write a function addOddNumbers(numbers) to add all the odd numbers in a list. To access each element in a list, you can
+#use the statement 'for num in numbers:'.
+
+def addOddNumbers(numbers):
+    count = 0
+    for items in numbers:
+        if items % 2 == 1:
+            count += items
+    return count
+
+print addOddNumbers([1, 4, 8, 9])
+print addOddNumbers(range(1, 20, 3))
+print addOddNumbers([])
+
+"""
+01:29 - Another pretty easy for loop using the modulus to figure out the odd number
+"""
+
+#6 - Write a function countOddNumbers(numbers) to count the number of odd numbers in a list.
+
+def countOddNumbers(numbers):
+    count = 0
+    for items in numbers:
+        if items % 2 == 1:
+            count += 1
+    return count
+
+print countOddNumbers([1, 4, 8, 9])
+print countOddNumbers(range(1, 20, 3))
+print countOddNumbers([])
+
+"""
+1:04 - Easy. Just needed a for loop and a counter when each time an odd number appears
+"""
+
+#7 - Write a function getEvenNumbers(numbers) to return all the even numbers in a list.
+
+def getEvenNumbers(numbers):
+    even_list = []
+    for items in numbers:
+        if items % 2 == 0:
+            even_list.append(items)
+    return even_list
+
+print getEvenNumbers([1, 4, 8, 9])
+print getEvenNumbers(range(1, 20, 3))
+print getEvenNumbers([])
+
+"""
+01:08 - Easy for loop using append and modulus function.
+"""
+
+#8 - Write a function removeFirstAndLast(list) that takes in a list as an argument and remove the first and last
+# elements from the list. The function will return a list with the remaining items.
+
+def removeFirstAndLast(list):
+    if len(list) < 2:
+        list.remove(list[0])
+        return list
+    else:
+        list.remove(list[0])
+        list.remove(list[-1])
+        return list
+
+print removeFirstAndLast([1, 4])
+print removeFirstAndLast(range(1, 20, 3))
+print removeFirstAndLast([1])
+
+"""
+03:32 - Thought I could just use the .remove function, but wouldn't work with just one integer in the list. Worked fine
+after I created the if/else statement
+"""
+
+#9 - Write a function getMaxNumber(numbers) that returns the maximum number in a list.
+
+def getMaxNumber(numbers):
+    i = 1
+    if len(numbers) < 1:
+        return 'N.A'
+    for items in numbers:
+       if items < numbers[1]:
+           i += 1
+           continue
+    return items
+
+print getMaxNumber([1, 4, 10])
+print getMaxNumber(range(1, 20, 3))
+print getMaxNumber([])
+
+"""
+18:10 - What stumped me on this one was then empty list and how to return 'N.A'. I kept putting the if len(numbers) < 1:
+statement in the for loop. Didn't work until I moved it out of the for loop. Also, I originally started this with a while
+loop... I messed that up making a forever loop. haha. Realized that I didn't need it and proceeded with just a for loop.
+"""
+
+#10 - Write a function getMinNumber(numbers) that returns the minimum number in a list.
+def getMinNumber(numbers):
+    if len(numbers) == 0:
+        return 'N.A'
+    else:
+        return sorted(numbers)[0]
+
+print getMinNumber([12, 4, 10])
+print getMinNumber([])
+
+"""
+17:25 - would have been quicker, but decided to mess around with a while loop again. Apparently, I'm pretty crappy at
+those. Decided to sort the list so I don't have to do any real checks like the previous program.
+"""
 
 
