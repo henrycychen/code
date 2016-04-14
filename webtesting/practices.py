@@ -632,4 +632,24 @@ print getMinNumber([])
 those. Decided to sort the list so I don't have to do any real checks like the previous program.
 """
 
+#16 - Write a function combine(la, lb) that takes in two lists and return a list with the contents of both list sorted
+# in ascending order.
+
+def combine(la, lb):
+    new_list = []
+    for items in la:
+        new_list.append(items)
+
+    for items in lb:
+        new_list.append(items)
+
+    return sorted(new_list)
+
+print combine(['a', 'p', 'l'], ['g','o','l'])
+print combine(range(10, 2, -2), range(1, 10, 3))
+print combine(['a', 1, 'z'], [2, 4, 'y'])
+
+"""
+01:15 - Easier than I thought. Made a new list using for loops.
+"""
 
