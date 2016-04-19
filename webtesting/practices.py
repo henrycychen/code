@@ -934,7 +934,7 @@ print combineList(range(5), ['a', 'b', 'c'])
 01:21 - I'm getting too good at this.
 """
 
-#Write a function (list1, list2) that takes in two lists as arguments and return a list that is the result of removing
+#22 - Write a function (list1, list2) that takes in two lists as arguments and return a list that is the result of removing
 # elements from list1 that can be found in list2.
 def subtractList(list1, list2):
     new_list = []
@@ -953,7 +953,83 @@ print subtractList (['a', 'b', 'c', 'd'], ['x', 'y', 'z'])
 02:20 - just having a good list answers day... easy
 """
 
+#23 - Write a function countLetters(word) that takes in a word as argument and returns a list that counts the number of
+# times each letter appears. The letters must be sorted in alphabetical order.
+def countLetters(word):
+    new_list = []
+    count_list = []
+    for letters in sorted(set(word)):
+        new_list.append(letters)
+        count_list.append(word.count(letters))
+    return zip(new_list,count_list)
 
+print countLetters('google')
+print countLetters('apple')
+print countLetters('microsoft')
 
+"""
+47:01 - took me about 20 minutes to get the letters and count in order, but then I got stuck on how to group them together.
+Had to look up the answer. zip is on my cheat sheet now.
+"""
 
+#24 - Write a function getNumbers(number) that takes in a number as argument and return a list of numbers as shown in the
+# samples given below.
+def getNumbers(number):
+    new_list = []
+    for nums in range(number,-1,-2):
+        new_list.append(nums**2)
+    for nums in range(new_list[-1],number + 1,2):
+        if nums != 0:
+            new_list.append(nums**2)
+    return new_list
 
+print getNumbers(10)
+print getNumbers(9)
+print getNumbers(8)
+print getNumbers(0)
+
+"""
+23:35 - Took me a while to try and figure out the algorithm and how to bypass certain numbers. 0 is not suppose to be
+repeated, but 1 can...
+"""
+
+#24 - Write a function getSumOfFirstDigit(numList) that takes in a list of positive numbers and returns the sum of all the
+# first digit in the list.
+def getSumOfFirstDigit(numList):
+    new_list = []
+    new_list2 = []
+    sum = 0
+    for nums in numList:
+        new_list.append(str(nums))
+    for nums in new_list:
+        new_list2.append(nums[0])
+    for nums in new_list2:
+        sum += int(nums)
+    return sum
+
+print getSumOfFirstDigit([12, 23, 34, 45, 56])
+print getSumOfFirstDigit([1, 23, 456, 7890])
+print getSumOfFirstDigit([])
+
+"""
+07:20 - I'm pretty sure this is not an efficient way of writing code, but only way I could think of to get the answer.
+
+here is an online list comprehension way, idea was the same, just the code can be simplified a lot more...
+
+def getSumOfFirstDigit(numList):
+    return sum(int(str(n)[0]) for n in numList)
+
+and I just rewrote it more simplified
+
+def getSumOfFirstDigit(numList):
+    answer = 0
+    for nums in numList:
+        answer += int(str(nums)[0])
+    return answer
+"""
+
+#26 - List comprehension offers a concise way to derive a new list from an existing list or sequence. Given a list of
+# numbers, write a function that returns the numbers that are greater than the average.
+
+def getAboveAverage(nums):
+    return [ x for x in nums if x > sum(nums)/len(nums) ]  # complete the list comprehension
