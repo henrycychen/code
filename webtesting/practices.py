@@ -653,3 +653,307 @@ print combine(['a', 1, 'z'], [2, 4, 'y'])
 01:15 - Easier than I thought. Made a new list using for loops.
 """
 
+#Codingbat questions - Warm up.
+
+#1 - The parameter weekday is True if it is a weekday, and the parameter vacation is True if we are on vacation.
+# We sleep in if it is not a weekday or we're on vacation. Return True if we sleep in.
+
+def sleep_in(weekday, vacation):
+    if weekday == True and vacation == True:
+        return True
+    elif weekday == True:
+        return False
+    elif weekday == False and vacation == False:
+        return True
+    elif weekday == True and vacation == True:
+        return False
+    elif vacation == True:
+        return True
+    else:
+        return False
+
+print sleep_in(False, False)
+print sleep_in(True, False)
+print sleep_in(False, True)
+
+"""
+4:30 - Was trying to understand their question. I knew it was booleans, but didn't understand what they wanted. Once I did,
+had to do a little guess and check.
+"""
+
+#2 - We have two monkeys, a and b, and the parameters a_smile and b_smile indicate if each is smiling. We are in trouble if
+# they are both smiling or if neither of them is smiling. Return True if we are in trouble.
+
+def monkey_trouble(a_smile, b_smile):
+    if a_smile == True and b_smile == True:
+        return True
+    elif a_smile == False and b_smile == False:
+        return True
+    else:
+        return False
+
+"""
+02:19 - Simple if/else statement.
+"""
+
+#3 - Given two int values, return their sum. Unless the two values are the same, then return double their sum.
+def sum_double(x,y):
+    if x == y:
+        return (x+y)*2
+    else:
+        return x+y
+
+print sum_double(1, 2)
+print sum_double(3, 2)
+print sum_double(2, 2)
+
+"""
+02:32 - Should have done it faster, but I didn't read the problem correctly. Thought I was suppose to square it, but instead
+it's just multiply by 2.
+"""
+
+#4 - Given an int n, return the absolute difference between n and 21, except return double the absolute difference if n
+# is over 21.
+
+def diff21(num):
+    if num > 21:
+        return abs(21-num)*2
+    else:
+        return 21 - num
+print diff21(19)
+print diff21(10)
+print diff21(21)
+
+"""
+03:13 - pretty simple, just had to play around with the absolute function to make sure I got the correct answers
+"""
+
+#5 - We have a loud talking parrot. The "hour" parameter is the current hour time in the range 0..23. We are in trouble
+#  if the parrot is talking and the hour is before 7 or after 20. Return True if we are in trouble.
+def parrot_trouble(x, time):
+    if x == False:
+        return False
+    elif x == True and time > 20:
+        return True
+    elif x == True and time < 7:
+        return True
+    else:
+        return False
+
+print parrot_trouble(True, 6)
+print parrot_trouble(True, 7)
+print parrot_trouble(False, 6)
+
+"""
+03:06 - more if/else statements. Pretty simple.
+"""
+
+#6 - Given 2 ints, a and b, return True if one if them is 10 or if their sum is 10.
+def makes10(x, y):
+    if x == 10 or y == 10:
+        return True
+    elif x+y == 10:
+        return True
+    else:
+        return False
+
+makes10(9, 10)
+makes10(9, 9)
+makes10(1, 9)
+
+"""
+0:53 - Easy. not much explanation.
+"""
+
+#7 - Given an int n, return True if it is within 10 of 100 or 200. Note: abs(num) computes the absolute value of a number.
+
+def near_hundred(n):
+    if abs(n) >= 90 and abs(n) <= 110:
+        return True
+    elif abs(n) >= 190 and abs(n) <= 210:
+        return True
+    else:
+        return False
+
+print near_hundred(93)
+print near_hundred(90)
+print near_hundred(89)
+
+"""
+04:01 - Easy. Just had to write if/else statements and make sure n fits in the parameters. Apparently I just noticed can
+do this too.
+
+def near_hundred(n):
+  return ((abs(100 - n) <= 10) or (abs(200 - n) <= 10))
+"""
+
+#8 - Given 2 int values, return True if one is negative and one is positive. Except if the parameter "negative" is True,
+# then return True only if both are negative.
+
+def pos_neg(x,y,z):
+    if z == True:
+        return x < 0 and y < 0
+    elif z == False and x < 0 and y < 0:
+        return False
+    elif z == False and x > 0 and y > 0:
+        return False
+    else:
+        return True
+
+print pos_neg(-4, -5, False)
+print pos_neg(1, -1, False)
+print pos_neg(-1, 1, False)
+print pos_neg(-4, -5, True)
+
+"""
+12:35 - This one was weird. Did the guess and check work until it told me the answer is good. Below is their solution
+
+def pos_neg(a, b, negative):
+  if negative:
+    return (a < 0 and b < 0)
+  else:
+    return ((a < 0 and b > 0) or (a > 0 and b < 0))
+"""
+
+#9 - Given a string, return a new string where "not " has been added to the front. However, if the string already begins
+# with "not", return the string unchanged.
+def not_string(str):
+    if 'not' == str[0:3]:
+        return str
+    else:
+        return 'not ' + str
+
+print not_string('candy')
+print not_string('x')
+print not_string('not bad')
+
+"""
+8:50 - Had a mistype in my string. I forgot that indexing only counts up to the last letter. I was using str[0:2] which
+meant I was only looking for 'no' instead of 'not'.
+"""
+
+# Given a non-empty string and an int n, return a new string where the char at index n has been removed. The value of n
+# will be a valid index of a char in the original string (i.e. n will be in the range 0..len(str)-1 inclusive).
+def missing_char(str, n):
+    return str[0:n] + str[n+1::]
+
+print missing_char('kitten', 1)
+print missing_char('kitten', 0)
+print missing_char('kitten', 4)
+
+"""
+02:04 - Pretty easy and self explanatory. Wanted to return the first half of the word up to index 'n' and then concatenate the
+rest of the word after index 'n'.
+
+the solution differs a little than mine:
+
+def missing_char(str, n):
+  front = str[:n]   # up to but not including n
+  back = str[n+1:]  # n+1 through end of string
+  return front + back
+"""
+
+#Given a string, return a new string where the first and last chars have been exchanged.
+
+def front_back(str):
+    if len(str) <= 1:
+        return str
+    else:
+        return str[-1] + str[1:-1] + str[0]
+
+print front_back('code')
+print front_back('a')
+print front_back('ab')
+
+"""
+05:28 - not too bad, just got hung up a little on the middle letters of the word. Had to guess and check. Also, words with
+only 1 or 0 letters, had to put in a separate if statement to accomodate.
+
+I think my solution was better than theirs
+def front_back(str):
+  if len(str) <= 1:
+    return str
+
+  mid = str[1:len(str)-1]  # can be written as str[1:-1]
+
+  # last + mid + first
+  return str[len(str)-1] + mid + str[0]
+"""
+
+#Given a string, we'll say that the front is the first 3 chars of the string. If the string length is less than 3, the ' \
+#'front is whatever is there. Return a new string which is 3 copies of the front.
+
+def front3(str):
+    if len(str) < 3:
+        return str*3
+    else:
+        return str[0:3] * 3
+
+print front3('Java')
+print front3('Chocolate')
+print front3('abc')
+
+"""
+01:09 - easy.
+"""
+
+#Back to pyschools list questions - #19 - Write a function calCumulativeSum(numbers) that takes in a list of numbers as argument and returns the cumulative
+#  sum of the list. That is, the new list where the i element is the sum of the first i + 1 elements from the original
+# list. For example, the cumulative sum of [1, 2, 3] is [1, 3, 6].
+def calCumulativeSum(numbers):
+    new_list = []
+    count = 0
+    for nums in numbers:
+        count += nums
+        new_list.append(count)
+    return new_list
+
+print calCumulativeSum([1,2,3])
+print calCumulativeSum([2,2,2])
+print calCumulativeSum([2,4,6])
+
+"""
+02:59 - Surprisingly easy... used a for loop and just appeneded every new count to a new list.
+"""
+
+#20 - Write a function combineList(list1, list2) that takes in two lists as arguments and return a list that combines all
+# the elements in the two list.
+def combineList(list1, list2):
+    new_list = []
+    for nums in list1:
+        new_list.append(nums)
+    for nums in list2:
+        new_list.append(nums)
+    return new_list
+
+print combineList([1,2], [3, 4])
+print combineList(range(5), range(5))
+print combineList(range(5), ['a', 'b', 'c'])
+
+"""
+01:21 - I'm getting too good at this.
+"""
+
+#Write a function (list1, list2) that takes in two lists as arguments and return a list that is the result of removing
+# elements from list1 that can be found in list2.
+def subtractList(list1, list2):
+    new_list = []
+    for nums in list1:
+        if nums in list2:
+            continue
+        else:
+            new_list.append(nums)
+    return new_list
+
+print subtractList(range(5), range(4))
+print subtractList([1,2,3,4,5], [2, 4])
+print subtractList (['a', 'b', 'c', 'd'], ['x', 'y', 'z'])
+
+"""
+02:20 - just having a good list answers day... easy
+"""
+
+
+
+
+
