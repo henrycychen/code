@@ -995,6 +995,7 @@ repeated, but 1 can...
 
 #24 - Write a function getSumOfFirstDigit(numList) that takes in a list of positive numbers and returns the sum of all the
 # first digit in the list.
+
 def getSumOfFirstDigit(numList):
     new_list = []
     new_list2 = []
@@ -1031,5 +1032,603 @@ def getSumOfFirstDigit(numList):
 #26 - List comprehension offers a concise way to derive a new list from an existing list or sequence. Given a list of
 # numbers, write a function that returns the numbers that are greater than the average.
 
+"""
 def getAboveAverage(nums):
     return [ x for x in nums if x > sum(nums)/len(nums) ]  # complete the list comprehension
+
+just had to fill in the blank after x >.
+"""
+
+#while loops off of pyschool
+#Create a function addNumbers(x) that takes a number as an argument and adds all the integers between 1 and the number
+# (inclusive) and returns the total number.
+
+def addNumbers(x):
+    i = 0
+    count = 0
+    while i < x:
+        for nums in range(x+1):
+            count += nums
+            i += 1
+    return count
+
+print addNumbers(10)
+print addNumbers(1)
+
+"""
+4:00 - Took me a sec to think of what variables I needed to keep track of. I know I needed a stop (i < x), a running count
+of the total, and 'i' increasing by 1 until the stop.
+"""
+
+#Create a function addNumbers(start, end) that adds all the integers between the start and end value (inclusive) and
+# returns the total sum.
+def addNumbers(start,end):
+    count = 0
+    i = start
+    while i < end + 1:
+        for nums in range(start, end + 1):
+            count += nums
+            i += 1
+        return count
+
+print addNumbers(5, 10)
+print addNumbers(1, 1)
+
+"""
+02:53 - Pretty easy. Same as last, but placed a range start to end.
+"""
+
+#Create a function countPages(x) that takes the number of pages of a book as an argument and counts the number of times
+# the digit '1' appears in the page number.
+def countPages(x):
+    total = 0
+    i = 1
+    while i < x+1:
+        total += str(i).count('1')
+        i += 1
+    return total
+
+print countPages(200)
+print countPages(100)
+print countPages(11)
+
+"""
+09:35 - Needed to know the built-in function to count the '1' in the string. Had issues with it when I was using a for
+loop and it would only count '11', 1 instead of 2.
+"""
+
+#Create a function factorial(x) that takes an integer and returns the product of all the positive integers less than
+# or equal to n.
+def factorial(x):
+    total = 1
+    i = 0
+    while i < x+1:
+        for nums in range(1, x+1):
+            total *= nums
+            i += 1
+        return total
+
+print factorial(10)
+print factorial(0)
+
+"""
+Forgot to time, but figured out the answer. I need to stop putting for loops into a while loop(I'm making it repetitive).
+Also, better answer below just using a while loop.
+
+def factorial(num):
+    product = 1
+    i = num
+    while i > 0:
+        product = product * i
+        i = i - 1
+    return product
+"""
+
+#Create a function doubleFactorial(n) that takes an odd integer and returns the product of all odd values up to the
+# value n (where n=2k-1).
+
+def doubleFactorial(n):
+    product = 1
+    i = 1
+    while n > i:
+        if n % 2 == 1:
+            product = product * n
+        n -= 1
+    return product
+
+print doubleFactorial(9)
+print doubleFactorial(1)
+
+"""
+11:48 - I did not understand their question using n = 2k - 1 so I just made up my own. Took me a while only because I placed
+n -= 1 in the wrong place (I originally placed it under the if statement.
+"""
+
+#Create a function that takes in a positive integer and return a list of prime numbers.
+#A prime number is only divisible by 1 and itself.
+
+def prime_check(x):
+    i = 1
+    count = 0
+    while i <= x:
+        if x % i == 0:
+            count += 1
+        i += 1
+        if count > 2:
+            return False
+    else:
+        return True
+
+def primeNumbers(num):
+    i = 1
+    prime_list = []
+    while num > i:
+        if prime_check(num) == True:
+            prime_list.append(num)
+        num -= 1
+    return sorted(prime_list)
+
+print primeNumbers(5)
+
+"""
+XX:XX - A lot of hours trying to figure out the below. Instead I just made two functions. One to check if the number was
+prime and the second function would go through each number up until 'num' and call the first function to check it. Below
+was another answer from online that still baffles me with the k*k statement...
+
+def primeNumbers(num):
+    primes = []
+    i = 2
+    while i <= num:
+        k = 2
+        isPrime = True
+        while k*k <= i:
+            if i%k == 0:
+               isPrime = False
+            k += 1
+        if isPrime:
+            primes.append(i)
+        i += 1
+    return primes
+"""
+
+#Create a function that takes in a positive number and return 2 integers such that the number is between the squares
+# of the 2 integers. It returns the same integer twice if the number is a square of an integer.
+
+def sqApprox(num):
+    i = 0
+    minsq = 0                            # set lower bound
+    maxsq = round(num + 0.4,0)                   # set upper bound
+    while i < num:                       # set 'while' termination condition
+          if i*i<=num and i > minsq:     # complete inequality condition
+             minsq = i
+          if i*i>=num and i < maxsq:     # complete inequality condition
+             maxsq = i
+          i += 1                         # update i so that 'while' will terminate
+    return (minsq, maxsq)
+
+print sqApprox(2)
+print sqApprox(0.1)
+print sqApprox(4)
+print sqApprox(1.2)
+
+"""
+12:50 - just had to fill in the blanks of their 90% done finished code. Was trying to understand it, so it took me a little
+while to complete.
+"""
+
+#Back to coding bat on Warmup-2
+#Given a string and a non-negative int n, return a larger string that is n copies of the original string.
+
+def string_times(str, n):
+    return str*n
+
+print string_times('Hi', 2)
+print string_times('Hi', 3)
+print string_times('Hi', 1)
+
+"""
+0:03 - easy
+"""
+
+#`Given a string and a non-negative int n, we'll say that the front of the string is the first 3 chars, or whatever is '
+#'there if the string is less than length 3. Return n copies of the front
+def front_times(str,n):
+    return str[0:3]*n
+
+front_times('Chocolate', 2)
+front_times('Chocolate', 3)
+front_times('Abc', 3)
+
+"""
+easy
+"""
+
+#Given a string, return a new string made of every other char starting with the first, so "Hello" yields "Hlo".
+
+def string_bits(str):
+    result = ''
+    for i in range(0,len(str),2):
+        result += str[i]
+    return result
+
+print string_bits('Hello')
+print string_bits('Hi')
+print string_bits('Heeololeo')
+
+"""
+This took me a lot longer than expected. Forgot that in for loops, use results vs. appending into a list.
+"""
+
+#Given a non-empty string like "Code" return a string like "CCoCodCode".
+
+def string_splosion(str):
+    result = ''
+    i = 0
+    while i < len(str) + 1:
+        result = result + str[0:i]
+        i += 1
+    return result
+
+print string_splosion('Code')
+print string_splosion('abc')
+print string_splosion('ab')
+
+"""
+09:04 - Thought I had to use a for loop... once my for loop didn't work, I switched over to a while loop, which worked
+better and only took me less than a minute to complete. Below is the answer using a for loop.
+
+def string_splosion(str):
+  result = ""
+  # On each iteration, add the substring of the chars 0..i
+  for i in range(len(str)):
+    result = result + str[:i+1]
+  return result
+"""
+
+#Given an array of ints, return the number of 9's in the array.
+
+def array_count9(array):
+    count = 0
+    for nums in array:
+        if nums == 9:
+            count += 1
+    return count
+
+print array_count9([1, 2, 9])
+print array_count9([1, 9, 9])
+print array_count9([1, 9, 9, 3, 9])
+
+"""
+02:01 - pretty straight forward for loop on this one.
+"""
+
+#Given an array of ints, return True if one of the first 4 elements in the array is a 9. The array length may be less than 4.
+
+def array_front9(array):
+    if 9 in array[0:4]:
+        return True
+    else:
+        return False
+
+print array_front9([1, 2, 9, 3, 4])
+print array_front9([1, 2, 3, 4, 9])
+print array_front9([1, 2, 3, 4, 5])
+
+"""
+03:02 - originally started with a 4 loop, but couldn't get that to work so I just did a simple if/else statement. Below
+is the for loop way.
+
+def array_front9(nums):
+  # First figure the end for the loop
+  end = len(nums)
+  if end > 4:
+    end = 4
+
+  for i in range(end):  # loop over index [0, 1, 2, 3]
+    if nums[i] == 9:
+      return True
+  return False
+"""
+
+str = 'word'
+print str[::-1]
+print str[0:-2]
+
+#Given an array of ints, return True if .. 1, 2, 3, .. appears in the array somewhere.
+def array123(nums):
+    if 1 in nums and 2 in nums and 3 in nums:
+        return True
+    else:
+        return False
+
+print array123([1, 1, 2, 3, 1])
+print array123([1, 1, 2, 4, 1])
+print array123([1, 1, 2, 1, 2, 3])
+
+"""
+07:14 - tried using a for loop, but that failed. Eventually just made a simple if/else statement and it worked. Below is
+the for loop solution.
+
+def array123(nums):
+  # Note: iterate with length-2, so can use i+1 and i+2 in the loop
+  for i in range(len(nums)-2):
+    if nums[i]==1 and nums[i+1]==2 and nums[i+2]==3:
+      return True
+  return False
+"""
+#coding bat - list practices
+#Given an array of ints, return True if 6 appears as either the first or last element in the array. The array will be length 1 or more.
+
+def first_last6(nums):
+    if 6 == nums[0] or 6 == nums[-1]:
+        return True
+    else:
+        return False
+
+first_last6([1, 2, 6])
+first_last6([6, 1, 2, 3])
+first_last6([13, 6, 1, 2, 3])
+
+"""
+0:54 - easy
+"""
+
+#Given an array of ints, return True if the array is length 1 or more, and the first element and the last element are equal.
+
+def same_first_last(nums):
+    return len(nums) >= 1 and nums[0] == nums[-1]
+
+same_first_last([1, 2, 3])
+same_first_last([1, 2, 3, 1])
+same_first_last([1, 2, 1])
+
+"""
+01:46 - pretty easy once I used the same solution as the last problem.
+"""
+
+#Return an int array length 3 containing the first 3 digits of pi, {3, 1, 4}.
+def make_pi():
+    return [3,1,4]
+
+print make_pi()
+
+"""
+This was a dumb exercise question... not even sure the point of it.
+"""
+
+#Given 2 arrays of ints, a and b, return True if they have the same first element or they have the same last element.
+#  Both arrays will be length 1 or more.
+def common_end(a,b):
+    return a[0] == b[0] or a[-1] == b[-1]
+
+common_end([1, 2, 3], [7, 3])
+common_end([1, 2, 3], [7, 3, 2])
+common_end([1, 2, 3], [1, 3])
+
+"""
+0:47 - pretty easy.
+"""
+
+#Given an array of ints length 3, return the sum of all the elements.
+def sum3(nums):
+    total = 0
+    for numbers in nums:
+        total += numbers
+    return total
+
+sum3([1, 2, 3])
+sum3([5, 11, 2])
+sum3([7, 0, 0])
+
+"""
+0:31 - another easy one.
+"""
+
+#Given an array of ints length 3, return an array with the elements "rotated left" so {1, 2, 3} yields {2, 3, 1}.
+def rotate_left3(nums):
+    for i in range(len(nums)):
+        return [nums[i+1], nums[i+2], nums[i]]
+
+print rotate_left3([1, 2, 3])
+print rotate_left3([5, 11, 9])
+print rotate_left3([7, 0, 0])
+
+"""
+2:40 - pretty easy to shift this over
+"""
+
+#Given an array of ints length 3, return a new array with the elements in reverse order, so {1, 2, 3} becomes {3, 2, 1}.
+def reverse3(nums):
+    return [nums[2], nums[1], nums[0]]
+
+print reverse3([1, 2, 3])
+print reverse3([5, 11, 9])
+print reverse3([7, 0, 0])
+
+"""
+01:26 - Another easy one.
+"""
+
+#Given an array of ints length 3, figure out which is larger between the first and last elements in the array, and set all the other elements to be that value. Return the changed array.
+
+def max_end3(nums):
+    if nums[0] > nums[2]:
+        return [nums[0],nums[0],nums[0]]
+    else:
+        return [nums[2], nums[2], nums[2]]
+
+max_end3([1, 2, 3])
+max_end3([11, 5, 9])
+max_end3([2, 11, 3])
+
+"""
+01:35 - Another straight forward one.
+"""
+
+#Given an array of ints, return the sum of the first 2 elements in the array. If the array length is less than 2, just
+# sum up the elements that exist, returning 0 if the array is length 0.
+def sum2(nums):
+    total = 0
+    if len(nums) < 1:
+        return 0
+    elif len(nums) < 2:
+        return nums[0]
+    else:
+        return nums[0] + nums[1]
+
+print sum2([1, 2, 3])
+print sum2([1, 1])
+print sum2([1, 1, 1, 1])
+
+"""
+04:26 - Had to think through of all the little exceptions. Pretty straight forward nonetheless.
+"""
+
+#Given 2 int arrays, a and b, each length 3, return a new array length 2 containing their middle elements.
+
+def middle_way(a,b):
+    return [a[1], b[1]]
+
+print middle_way([1, 2, 3], [4, 5, 6])
+print middle_way([7, 7, 7], [3, 8, 0])
+print middle_way([5, 2, 9], [1, 4, 5])
+
+"""
+0:36 - easy question.
+"""
+
+#Given an array of ints, return a new array length 2 containing the first and last elements from the original array.
+# The original array will be length 1 or more.
+def make_ends(nums):
+    if len(nums) < 2:
+        return [nums[0], nums[0]]
+    else:
+        return [nums[0], nums[-1]]
+
+print make_ends([1, 2, 3])
+print make_ends([1, 2, 3, 4])
+print make_ends([7, 4, 6, 2])
+
+"""
+01:18 - Another easy one.
+"""
+
+#Given an int array length 2, return True if it contains a 2 or a 3.
+
+def has23(nums):
+    return 2 in nums or 3 in nums
+
+print has23([2, 5])
+print has23([4, 3])
+print has23([4, 5])
+
+"""
+0:26 - Easy..
+"""
+
+#Return the number of times that the string "hi" appears anywhere in the given string.
+def count_hi(str):
+    count = 0
+    for i in range(len(str)):
+        if 'hi' in str[i:i+2]:
+            count += 1
+    return count
+
+print count_hi('abc hi ho')
+print count_hi('ABChi hi')
+print count_hi('hihi')
+
+"""
+Not sure how much time this took since I forgot to start the clock, but it was not fast. For loops have a different structure
+than all other loops, so it's good getting this kind of practice to figure out when I use for loops vs while loops.
+"""
+
+#Return True if the string "cat" and "dog" appear the same number of times in the given string.
+
+def cat_dog(str):
+    cat_count = 0
+    dog_count = 0
+
+    for i in range(len(str)):
+        if 'cat' in str[i:i+3]:
+            cat_count += 1
+        if 'dog' in str[i:i+3]:
+            dog_count += 1
+    if cat_count == dog_count:
+        return True
+    else:
+        return False
+
+print cat_dog('catdog')
+print cat_dog('catcat')
+print cat_dog('1cat1cadodog')
+
+"""
+04:00 - Not too difficult once I decided to use two counts and a for loop to check each 3 letters.
+"""
+
+#Return the number of times that the string "code" appears anywhere in the given string, except we'll accept any letter
+# for the 'd', so "cope" and "cooe" count.
+
+def count_code(str):
+    count = 0
+    for i in range(len(str)):
+        if 'code' in str[i:i+4] or 'cooe' in str[i:i+4] or 'cope' in str[i:i+4] or 'coze' in str[i:i+4] or 'cole' in str[i:i+4] or 'core' in str[i:i+4] or 'coze' in str[i:i+4]:
+            count += 1
+    return count
+
+
+print count_code('aaacodebbb')
+print count_code('codexxcode')
+print count_code('cozexxcope')
+
+"""
+07:53 - I cheated as I did not know how to find all the combinations of 'co$e'. I found someone else's code below, but it's a bit
+confusing...
+
+
+def count_code(str):
+  count = 0
+  i=0
+  while "co" in str[i:]:
+    if len(str[i+str[i:].index("co"):]) >= 4 and str[i+3+str[i:].index("co")] == "e":
+      count += 1
+    i += str[i:].index("co")+3
+  return count
+
+print count_code('aaacodebbb')
+#print count_code('codexxcode')
+#print count_code('cozexxcope')
+"""
+
+#Given two strings, return True if either of the strings appears at the very end of the other string, ignoring upper/lower
+# case differences (in other words, the computation should not be "case sensitive"). Note: s.lower() returns the lowercase
+# version of a string.
+
+def end_other(a,b):
+    longer_word = ''
+    shorter_word = ''
+    if len(a) > len(b):
+        longer_word = a.lower()
+        shorter_word = b.lower()
+    else:
+        longer_word = b.lower()
+        shorter_word = a.lower()
+
+    return shorter_word == longer_word[-len(shorter_word):]
+
+print end_other('AbC', 'HiaBc')
+print end_other('Hiabc', 'abcd')
+print end_other('Hiabc', 'abc')
+print end_other('AbC', 'HiaBc')
+print end_other('abc', 'abXabc')
+
+"""
+17:28 - Had to play around with the different positions on index. Apparently there's a built-in function that checks the end
+of a string...
+
+def end_other(a, b):
+  a = a.lower()
+  b = b.lower()
+  return (b.endswith(a) or a.endswith(b))
+"""
