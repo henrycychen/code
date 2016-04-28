@@ -1,0 +1,20 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
+driver = webdriver.Firefox()
+driver.get("http://www.amazon.com")
+elem = driver.find_element_by_id("twotabsearchtextbox")
+elem.send_keys("piddle")
+elem.send_keys(Keys.RETURN)
+elem2 = driver.find_element_by_xpath("/html/body/div[1]/div[1]/div[3]/div[2]/div/div[4]/div[1]/div/ul/li[2]/div/div/div/div[2]/div[2]/a/h2")
+elem2.click()
+elem3 = driver.find_element_by_xpath("/html/body/div[2]/div[7]/div[3]/div[2]/div/form/div[1]/div/div[1]/div/div/div[2]/div[3]/span/span/input")
+elem3.click()
+elem4 = driver.find_element_by_xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div/div/div[4]/div/div/div/span[2]/span/a")
+elem4.click()
+elem5 = driver.find_element_by_xpath("/html/body/div[1]/div[1]/div[3]/div/div[2]/form/div/div/div/div[1]/input")
+elem5.send_keys("test@gmail.com")
+elem6 = driver.find_element_by_xpath("/html/body/div[1]/div[1]/div[3]/div/div[2]/form/div/div/div/div[2]/input")
+elem6.send_keys("fuckghandi")
+#elem7 = driver.find_element_by_xpath("/html/body/div[1]/div[1]/div[3]/div/div[2]/form/div/div/div/div[3]/span/span/input")
+#elem7.click()
