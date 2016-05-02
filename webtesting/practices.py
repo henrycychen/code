@@ -1632,3 +1632,250 @@ def end_other(a, b):
   b = b.lower()
   return (b.endswith(a) or a.endswith(b))
 """
+
+#Return True if the given string contains an appearance of "xyz" where the xyz is not directly preceeded by a period (.).
+# So "xxyz" counts but "x.xyz" does not.
+
+def xyz_there(str):
+    if str < 3:
+            return False
+    for i in range(len(str)):
+        if '.xyz' in str[i:i+5]:
+            return False
+    else:
+        return 'xyz' in str
+
+
+print 'This is', xyz_there('abcxyz')
+print xyz_there('xxyz')
+print xyz_there('x.xyz')
+print xyz_there('abc.xyz')
+print xyz_there('xyz.abc')
+
+"""
+22:58 - So my first attempt was below. Was thinking if I could find the position of '.' before xyz, I could immediately
+make the statment False. Then I realized that I didn't have to do that, I could just search for the whole iteration of '.xyz'
+and use a for loop to go by ever 4 letters to see if '.xyz' == str[i:i+5]. The else statement would be True if 'xyz' is in
+the string.
+
+def xyz_there(str):
+    if str < 3:
+        return False
+    elif '.' == str[(str.find('xyz'))-1]:
+        return False
+    elif 'xyz' in str:
+        return True
+"""
+
+#Return the number of even ints in the given array. Note: the % "mod" operator computes the remainder, e.g. 5 % 2 is 1.
+
+def count_evens(nums):
+    count = 0
+    for numbers in nums:
+        if numbers % 2 == 0:
+            count += 1
+    return count
+
+print count_evens([2, 1, 2, 3, 4])
+print count_evens([2, 2, 0])
+print count_evens([1, 3, 5])
+
+"""
+0:51 - Easy. Simple for loop using modulo and if statement.
+"""
+
+#Given an array length 1 or more of ints, return the difference between the largest and smallest values in the array.
+# Note: the built-in min(v1, v2) and max(v1, v2) functions return the smaller or larger of two values.
+
+def big_diff(nums):
+    answer = sorted(nums)[len(nums)-1] - sorted(nums)[0]
+    return answer
+
+    return max(nums) - min(nums)
+
+print big_diff([10, 3, 5, 6])
+print big_diff([7, 2, 10, 9])
+print big_diff([2, 10, 7, 2])
+
+"""
+03:15 - Originally thought I could just take the index of a sorted list by using sorted() and then subtract the last index
+and index 0. Apparently the list doesn't always have 4 interations (I fixed it after to take any number of interations). Anyways,
+the second return using the builtin max/min functions were easier to use.
+"""
+
+#Return the "centered" average of an array of ints, which we'll say is the mean average of the values, except ignoring
+# the largest and smallest values in the array. If there are multiple copies of the smallest value, ignore just one copy,
+# and likewise for the largest value. Use int division to produce the final average. You may assume that the array is length
+# 3 or more.
+
+def centered_average(nums):
+    new_nums = sorted(nums)
+    total = 0
+    i = 1
+    while i < len(new_nums) - 1:
+        total = total + new_nums[i]
+        i += 1
+    return total / (len(new_nums) - 2)
+
+print centered_average([1, 2, 3, 4, 100])
+print centered_average([1, 1, 5, 5, 10, 8, 7])
+print centered_average([-10, -4, -2, -4, -2, 0])
+
+"""
+15:10 - Started with a for loop, but changed up to a while loop. Thought it would be faster... apparently not... I effed
+up the while loop originally by using range(len(new_nums))... I think I was still in for loop mode... once I figured out
+that error, was pretty easy to fix the remaining. Also did it using a for loop, took some time to figure out... but got it!
+
+def centered_average(nums):
+    total = 0
+    new_nums = sorted(nums)
+    for i in range(len(nums)):
+        if i == (len(nums) - 2):
+            break
+        total += new_nums[i+1]
+    return total / (len(nums)-2)
+
+"""
+
+#Return the sum of the numbers in the array, returning 0 for an empty array. Except the number 13 is very unlucky,
+# so it does not count and numbers that come immediately after a 13 also do not count.
+
+def sum13(nums):
+    total = 0
+    i = 0
+    while i < len(nums):
+        if nums[i] == 13:
+            del nums[i:i+2]
+            continue
+        i += 1
+    return sum(nums)
+
+
+print 'this is the answer ', sum13([1, 2, 2, 1])
+print sum13([1, 1])
+print sum13([1, 2, 2, 1, 13])
+print sum13([1, 2, 13, 2, 1, 13])
+print sum13([13, 1, 2, 13, 2, 1, 13])
+print sum13([])
+print sum13([13])
+print sum13([13, 13])
+print sum13([13, 0, 13])
+print sum13([13, 1, 13])
+print sum13([5, 7, 2])
+print sum13([5, 13, 2])
+print sum13([0])
+print sum13([13, 0])
+
+"""
+01:40 - So... I tried for loops and while loops... both came up short because of so many different possibilities... I had
+to look up the answer to find a shorter one than the one I made below... didn't know I could delete lists (I know I could
+.remove and .append, but didn't know there's a 'del' function... it's on my cheat sheet now.
+
+def sum13(nums):
+    if len(nums) == 0:
+        return 0
+    total = 0
+    for i in range(len(nums)):
+        if nums[i] == 13:
+            if i+2 > len(nums):
+                break
+            else:
+                total += nums[i+2]
+                break
+        total += nums[i]
+    return total
+
+
+def sum13(nums):
+    total = 0
+    i = 0
+    if len(nums) < 4:
+        if len(nums) == 0:
+            return 0
+        if len(nums) == 1 and nums[0] == 13:
+            return 0
+        if 13 == nums[0] and 13 == nums[1] and len(nums) == 2:
+            return 0
+        if len(nums) == 2 and 13 == nums[0]:
+            return 0
+        if 13 == nums[0] and 13 == nums[2]:
+            return 0
+        if 13 == nums[0] and len(nums) == 1:
+            return 0
+    while i < len(nums):
+        if nums[i] == 13 and i != (len(nums)-1) and len(nums) > 3:
+            i = i+2
+            total += nums[i]
+            i += 1
+            continue
+        if (i == len(nums)-1) and nums[i] == 13:
+            break
+        total += nums[i]
+        i += 1
+        if nums[1] == 13 and len(nums) == 3:
+            break
+    return total
+"""
+
+#Return the sum of the numbers in the array, except ignore sections of numbers starting with a 6 and extending to the
+# next 7 (every 6 will be followed by at least one 7). Return 0 for no numbers.
+
+def sum67(nums):
+    if 6 not in nums or len(nums) == 0:
+        return sum(nums)
+    i = 0
+    if 6 in nums:
+        while i < len(nums):
+            if nums[i] == 6:
+                del nums[i:nums.index(7,i)+1]
+            i += 1
+        return sum(nums)
+
+print 'sum67', sum67([1, 2, 2])
+print sum67([2, 7, 6, 2, 6, 7, 2, 7])
+print sum67([1, 1, 6, 7, 2])
+print sum67([])
+
+"""
+51:06 - I thought this would be easy also, but codingbat has all these freaking situations where my original code doesn't work.
+anyways, the issue with this one until I figured it out was that the del function was 'confused' that I told it to delete
+up to '7', but the 7 index was before the 6... I had to reread about indexes and how it's used. Finally figured out that
+I can look for the number starting at a certain index. In this case I would start at index i (index(7,i) so it wouldn't look
+for the first 7, but the 7 after the 6.
+"""
+
+#Given an array of ints, return True if the array contains a 2 next to a 2 somewhere.
+
+def has22(nums):
+    if len(nums) < 2:
+        return False
+    i = 0
+    while i < len(nums):
+        if nums[i] == 2 and i == len(nums)-1:
+            return False
+        if nums[i] == 2 and nums[i+1] == 2:
+            return True
+        i += 1
+    else:
+        return False
+
+
+#print has22([1, 2, 2])
+print has22([1, 2, 1, 2])
+print has22([2, 1, 2])
+print has22([2, 2, 1, 2])
+print has22([1, 3, 2])
+print has22([1, 3, 2, 2])
+print has22([2, 3, 2, 2])
+print has22([4, 2, 4, 2, 2, 5])
+print has22([1, 2])
+print has22([2, 2])
+print has22([2])
+print has22([])
+print has22([3, 3, 2, 2])
+print has22([5, 2, 5, 2])
+
+"""
+09:27 - Thought this was going to be another hour long problem. Fortunately, I was able to find the two damn exceptions.
+if '2' is the last interation and it hasn't found 2x2 together yet, return False. Was about to smash my computer screen!
+"""
