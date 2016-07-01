@@ -14,16 +14,12 @@ Class Invoice_ninja() - has information regarding server, api, header informatio
 
 #Creating some global variables to avoid repetition for future asserts and tests).
 i = Invoice_ninja() #Variable for Class Invoice Ninja
-
 g = Generate_information() #Variable for Class Generate Information
-#name = g.create_name() #Create client name into
-
+name = g.create_name() #Create client name into
 fake_item1 = g.create_item()
-
 #create test_client which is the most recent client ID created
 r1 = requests.get(i.invoice_ninja_clients_url,headers=i.get_request_header)
 test_client = (json.loads(r1.text))['data'][0]['id']
-
 
 #Get all the clients from the database and check to see if the status code is good (response 200).
 @pytest.mark.client
