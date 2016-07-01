@@ -54,5 +54,13 @@ class Invoice_ninja(object):
     def create_10_clients(self):
         self.create_10_clients = ''
         for i in range(0,10):
-            my_data = json.dumps({'name': Generate_information().create_name(), 'contact':{'email': Generate_information().split_name_to_email(Generate_information().create_name())}})
+            new_client = Generate_information().create_name()
+            my_data = json.dumps({'name':new_client, 'contact':{'email': Generate_information().split_name_to_email(new_client)}})
             r = requests.post(Invoice_ninja().invoice_ninja_clients_url,headers=Invoice_ninja().post_request_header,data=my_data)
+
+    #Function to create one client.
+    def create_new_client(self):
+        self.create_new_client = Generate_information().create_name()
+        name = self.create_new_client
+        my_data = json.dumps({'name': name, 'contact':{'email': Generate_information().split_name_to_email(name)}})
+        r = requests.post(Invoice_ninja().invoice_ninja_clients_url,headers=Invoice_ninja().post_request_header,data=my_data)
